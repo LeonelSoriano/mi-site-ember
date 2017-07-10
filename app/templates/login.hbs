@@ -1,0 +1,46 @@
+
+
+{{#if logionErrorMsg }}
+    <div class="alert callout" id="msg-login-erro"  data-closable>
+  {{logionErrorMsg}}
+  <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{{/if}}
+
+
+
+ <div class="row " >
+    <div class="large-6 columns large-centered">
+      <div class="signup-panel">
+        <p class="welcome"> Welcome to this awesome app!</p>
+        <form>
+          <div class="row collapse">
+          
+            <div class="small-12  columns large-centered ">
+              
+				{{input type="text" placeholder="E-mail address" value=email}}
+            </div>
+          </div>
+         
+          <div class="row collapse">
+           
+            <div class="small-12 columns ">
+             {{input type="password" placeholder="Password" value=myPassword}}
+            </div>
+          </div>
+        </form>
+        <button {{action "signIn"}} class="ui fluid large teal submit button" >Login</button>
+         <p>Already have an account? <a href="#">Login here &raquo</a></p>
+      </div>
+    </div>
+   </div>
+
+
+
+{{outlet}}
+
+
+
+

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>MiSite</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {{content-for "head"}}
+
+    <link rel="stylesheet" href="{{rootURL}}assets/vendor.css">
+    <link rel="stylesheet" href="{{rootURL}}assets/mi-site.css">
+
+    <link rel="stylesheet" href="{{rootURL}}styles/palette.css">
+    <link rel="stylesheet" href="{{rootURL}}styles/style.css">
+    <link rel="stylesheet" href="{{rootURL}}styles/font-awesome.css">
+    <link rel="stylesheet" href="{{rootURL}}styles/themify-icons.css">
+    <link rel="stylesheet" href="{{rootURL}}styles/theme.css">
+    <link  rel="stylesheet" href="{{rootURL}}styles/pace-theme-flash.css" >
+    <link rel="stylesheet" href="{{rootURL}}styles/slicknav.css">
+
+    
+
+
+
+    {{content-for "head-footer"}}
+  </head>
+  <body>
+    {{content-for "body"}}
+
+    <script src="{{rootURL}}assets/vendor.js"></script>
+<script type="text/javascript" src="{{rootURL}}js/jquery.slicknav.js"></script>
+
+
+
+    <script src="{{rootURL}}assets/mi-site.js"></script>
+    
+
+    {{content-for "body-footer"}}
+  </body>
+</html>
