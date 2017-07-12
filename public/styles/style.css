@@ -100,7 +100,7 @@ Author: Themesmile
     clear: both;
 }
 
-.lockscreen-item > .lockscreen-image {
+.lockscreen-item>.lockscreen-image {
     position: absolute;
     left: -10px;
     top: -30px;
@@ -112,7 +112,7 @@ Author: Themesmile
     z-index: 10;
 }
 
-.lockscreen-item > .lockscreen-image > img {
+.lockscreen-item>.lockscreen-image>img {
     width: 70px;
     height: 70px;
     -webkit-border-radius: 50%;
@@ -120,15 +120,15 @@ Author: Themesmile
     border-radius: 50%;
 }
 
-.lockscreen-item > .lockscreen-credentials {
+.lockscreen-item>.lockscreen-credentials {
     margin-left: 80px;
 }
 
-.lockscreen-item > .lockscreen-credentials input {
+.lockscreen-item>.lockscreen-credentials input {
     border: 0 !important;
 }
 
-.lockscreen-item > .lockscreen-credentials .btn {
+.lockscreen-item>.lockscreen-credentials .btn {
     background-color: #fff;
     border: 0;
 }
@@ -161,7 +161,7 @@ Buttons
     padding: 7px 10px;
 }
 
-.dropdown-menu > li > a {
+.dropdown-menu>li>a {
     color: #888;
     font-size: 13px;
 }
@@ -331,7 +331,7 @@ Buttons
     overflow: hidden;
 }
 
-.btn.btn-file > input[type='file'] {
+.btn.btn-file>input[type='file'] {
     display: block !important;
     width: 100% !important;
     height: 35px !important;
@@ -360,9 +360,9 @@ Buttons
     font-size: 12px;
 }
 
-.btn.btn-app > .fa,
-.btn.btn-app > .glyphicon,
-.btn.btn-app > .ion {
+.btn.btn-app>.fa,
+.btn.btn-app>.glyphicon,
+.btn.btn-app>.ion {
     font-size: 20px;
     display: block;
 }
@@ -380,7 +380,7 @@ Buttons
     box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
 }
 
-.btn.btn-app > .badge {
+.btn.btn-app>.badge {
     position: absolute;
     top: -3px;
     right: -10px;
@@ -396,12 +396,12 @@ Buttons
     padding: 0;
 }
 
-.btn.btn-social-old > .fa {
+.btn.btn-social-old>.fa {
     padding: 10px 0;
     width: 40px;
 }
 
-.btn.btn-social-old > .fa + span {
+.btn.btn-social-old>.fa+span {
     border-left: 1px solid rgba(255, 255, 255, 0.3);
 }
 
@@ -578,7 +578,7 @@ Pricing Table
     list-style: none;
 }
 
-.plan-feature + .plan-feature {
+.plan-feature+.plan-feature {
     line-height: 20px;
     font-size: 24px;
     font-weight: bold;
@@ -730,24 +730,24 @@ Timeline
     top: 20px;
 }
 
-.timeline > li {
+.timeline>li {
     position: relative;
     margin-right: 10px;
     margin-bottom: 15px;
 }
 
-.timeline > li:before {
+.timeline>li:before {
     display: table;
     content: " ";
 }
 
-.timeline > li:after {
+.timeline>li:after {
     display: table;
     content: " ";
     clear: both;
 }
 
-.timeline > li > .timeline-item {
+.timeline>li>.timeline-item {
     margin-top: 25px;
     border: 0px solid #dfdfdf;
     background: #fff;
@@ -760,13 +760,13 @@ Timeline
     font-size: 13px;
 }
 
-.timeline > li > .timeline-item > .time {
+.timeline>li>.timeline-item>.time {
     color: #999;
     float: right;
     margin: 2px 0 0 0;
 }
 
-.timeline > li > .timeline-item > .timeline-header {
+.timeline>li>.timeline-item>.timeline-header {
     margin: 0 0 10px;
     border-bottom: 1px dashed #ddd;
     padding: 20px;
@@ -774,13 +774,13 @@ Timeline
     line-height: 1.1;
 }
 
-.timeline > li > .timeline-item > .timeline-header span {
+.timeline>li>.timeline-item>.timeline-header span {
     color: #fff;
     font-size: 13px;
     font-weight: bold;
 }
 
-.timeline > li > .timeline-item > .timeline-header:before {
+.timeline>li>.timeline-item>.timeline-header:before {
     content: "\f0d9";
     font-size: 60px;
     font-family: FontAwesome;
@@ -788,17 +788,17 @@ Timeline
     left: -15px;
 }
 
-.timeline > li > .timeline-item > .timeline-header > a {
+.timeline>li>.timeline-item>.timeline-header>a {
     font-weight: 600;
 }
 
-.timeline > li > .timeline-item > .timeline-body,
-.timeline > li > .timeline-item > .timeline-footer {
+.timeline>li>.timeline-item>.timeline-body,
+.timeline>li>.timeline-item>.timeline-footer {
     padding: 5px 10px;
     margin: 0;
 }
 
-.timeline > li.time-label > span {
+.timeline>li.time-label>span {
     font-weight: 600;
     padding: 5px;
     display: inline-block;
@@ -809,9 +809,9 @@ Timeline
     border-radius: 4px;
 }
 
-.timeline > li > .fa,
-.timeline > li > .glyphicon,
-.timeline > li > .ion {
+.timeline>li>.fa,
+.timeline>li>.glyphicon,
+.timeline>li>.ion {
     width: 45px;
     height: 45px;
     font-size: 25px;
@@ -825,11 +825,11 @@ Timeline
     top: 20px;
 }
 
-.timeline > li > h2 {
+.timeline>li>h2 {
     font-size: 12px;
 }
 
-.timeline > li > span {
+.timeline>li>span {
     color: #666;
     margin: 0;
     position: relative;
@@ -837,7 +837,7 @@ Timeline
     top: 5px;
 }
 
-.timeline > li > span > small {
+.timeline>li>span>small {
     background: none repeat scroll 0 0 #b1c2ca;
     border-radius: 3px;
     color: #fff;
@@ -1084,7 +1084,6 @@ ALERT
 
 .error-content h3 {
     font-family: "Montserrat Light", sans-serif !important;
-   
 }
 
 .container-loading {

@@ -9,6 +9,8 @@ export default Ember.Component.extend({
     dataFilter: null,
     dataHeader: null,
     headerName: null,
+    tableValue: null,
+    exe: null,
 
 
     value: function() { return this.get('data'); }.property('data'),
@@ -45,7 +47,26 @@ export default Ember.Component.extend({
                 }
                 this.get('dataHeader').push(tmpName);
                 // console.log('value =' + data[0].get(name));
-            })
+            });
+        }
+
+
+        if (data !== undefined && Array.isArray(data) && data.length >= 1) {
+            this.set("tableValue", []);
+
+
+            for (var i = 0; i < data.length; i++) {
+                var json = data[i];
+                var tmpTableValue = [];
+                tmpTableValue.push(json.get("id"));
+
+                json.eachAttribute((name, meta) => {
+
+                    tmpTableValue.push(json.get(name));
+                });
+                this.get("tableValue").push(tmpTableValue);
+            }
+            console.log(this.get("tableValue"));
         }
 
 
@@ -55,7 +76,7 @@ export default Ember.Component.extend({
 
     actions: {
         prueba: function() {
-            console.log("XXXXXXXXXX");
+            console.log(this.get('exe'));
             console.log(this.get("data"));
         }
 
