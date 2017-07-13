@@ -6,7 +6,20 @@ module.exports = function(defaults) {
   var app = new EmberApp(defaults, {
     // Add options here
 
- 	'ember-cli-foundation-6-sass': {
+  babel: {
+      blacklist: [
+        'es6.arrowFunctions',
+        'es6.blockScoping',
+        'es6.classes',
+        'es6.destructuring',
+        'es6.parameters',
+        'es6.properties.computed',
+        // ...more options
+      ]
+    },
+
+
+    'ember-cli-foundation-6-sass': {
       'foundationJs': 'all'
     },
 

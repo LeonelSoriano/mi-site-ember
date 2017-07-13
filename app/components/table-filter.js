@@ -78,6 +78,9 @@ export default Ember.Component.extend({
         prueba: function() {
             console.log(this.get('exe'));
             console.log(this.get("data"));
+        },
+        onFilter: function(a) {
+            alert(a + 1);
         }
 
     }
