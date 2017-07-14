@@ -33,6 +33,11 @@ export default Ember.Component.extend({
      */
     tableValue: null,
 
+    
+    /**
+     * guarda los valores de los filtros
+     */
+    filterValues : {},
 
     exe: null,
 
@@ -113,8 +118,11 @@ export default Ember.Component.extend({
             console.log(this.get('exe'));
             console.log(this.get("data"));
         },
-        onFilter: function(a) {
-            alert(a); 
+        onFilter: function(nameFilter) {
+
+            this.get('filterValues')[this.get('headerNameOriginal')[nameFilter]] = arguments[1];
+            
+            console.log(this.get('filterValues'));
         }
 
     }
