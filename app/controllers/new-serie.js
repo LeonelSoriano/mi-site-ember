@@ -11,8 +11,6 @@ const Validation = Ember.Object.extend({
 
 export default Ember.Controller.extend(SweetAlertMixin, {
 
-
-
     entitySerie: {},
 
     allSeries: null,

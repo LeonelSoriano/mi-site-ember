@@ -9,7 +9,7 @@ export default Ember.Component.extend({
 
     /**
      * data que se filtrara
-    */ 
+     */
     dataFilter: null,
 
 
@@ -20,7 +20,7 @@ export default Ember.Component.extend({
 
     /**
      * son los alias de los header
-    */ 
+     */
     headerName: null,
 
     /*
@@ -33,11 +33,11 @@ export default Ember.Component.extend({
      */
     tableValue: null,
 
-    
+
     /**
      * guarda los valores de los filtros
      */
-    filterValues : {},
+    filterValues: {},
 
     exe: null,
 
@@ -45,11 +45,11 @@ export default Ember.Component.extend({
     value: function() { return this.get('data'); }.property('data'),
 
     init: function() {
-       
+
         return this._super();
     },
 
- 
+
     dataObserver: Ember.observer('data', function() {
 
 
@@ -60,7 +60,7 @@ export default Ember.Component.extend({
         var data = this.get('data');
 
 
-        this.set("headerNameOriginal",{});
+        this.set("headerNameOriginal", {});
 
         this.set('dataHeader', []);
 
@@ -71,7 +71,7 @@ export default Ember.Component.extend({
 
                 if (headerName[name] !== undefined) {
                     tmpName = headerName[name];
-                                       
+
                 } else {
                     tmpName = name;
                 }
@@ -88,25 +88,51 @@ export default Ember.Component.extend({
 
 
     tableOperation: function() {
-        var data = this.get('data'); 
-    
+        var data = this.get('data');
+
         if (data !== undefined && Array.isArray(data) && data.length >= 1) {
             this.set("tableValue", []);
 
+            var isFilterActivate = false;
+
+            //verfico si hay un filtro activado
+            for (var filterItem in this.get('filterValues')) {
+
+                if (this.get('filterValues')[filterItem] !== undefined && this.get('filterValues')[filterItem].length > 0) {
+                    isFilterActivate = true;
+                    break;
+                }
+            }
+
+
+
+
             for (var i = 0; i < data.length; i++) {
+
+                //verficica si es un item correcto o no
+                var correctItem = true;
+
                 var json = data[i];
                 var tmpTableValue = [];
                 tmpTableValue.push(json.get("id"));
 
-                json.eachAttribute((name, meta) => {
 
+                json.eachAttribute((name, meta) => {
+                    if (correctItem) {
+                        var patt = new RegExp(this.get('filterValues')[name]);
+                        correctItem = patt.test(json.get(name));
+                    }
                     tmpTableValue.push(json.get(name));
                 });
-                this.get("tableValue").push(tmpTableValue);
-            }
-          //  console.log(this.get("tableValue"));
-        }
 
+                if (!isFilterActivate || correctItem) {
+                    this.get("tableValue").push(tmpTableValue);
+
+                }
+
+            }
+
+        }
 
 
         this.set('dataFilter', data);
@@ -121,8 +147,8 @@ export default Ember.Component.extend({
         onFilter: function(nameFilter) {
 
             this.get('filterValues')[this.get('headerNameOriginal')[nameFilter]] = arguments[1];
-            
-            console.log(this.get('filterValues'));
+
+            this.tableOperation();
         }
 
     }
