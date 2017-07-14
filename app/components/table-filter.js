@@ -1,3 +1,4 @@
+/*jshint esversion: 6 */
 import Ember from 'ember';
 
 export default Ember.Component.extend({
@@ -6,32 +7,55 @@ export default Ember.Component.extend({
 
     data: null,
 
+    /**
+     * data que se filtrara
+    */ 
     dataFilter: null,
+
+
+    /**
+     * son los header con los alias enviasdos desde el component
+     */
     dataHeader: null,
+
+    /**
+     * son los alias de los header
+    */ 
     headerName: null,
+
+    /*
+     * este es para conseguir los valores originales del array
+     */
+    headerNameOriginal: null,
+
+    /*
+     * son los valoes de la tabla en brutos enviados desde el component
+     */
     tableValue: null,
+
+
     exe: null,
 
 
     value: function() { return this.get('data'); }.property('data'),
 
     init: function() {
-        // this.set("headerName",this.get("headerName"));
-
-        // var ejemplo = this.get('store').findAll('serie');
-        // console.log("prueba: " + this.get('sample'));
-        //console.log(this.get("headerName").name);
+       
         return this._super();
     },
 
+ 
     dataObserver: Ember.observer('data', function() {
 
-        this.tableOperation();
-    }),
 
-    tableOperation: function() {
+        this.set("headerName", JSON.parse(this.get('headerName')));
+
+        var headerName = this.get('headerName');
+
         var data = this.get('data');
-        var headerName = JSON.parse(this.get('headerName'));
+
+
+        this.set("headerNameOriginal",{});
 
         this.set('dataHeader', []);
 
@@ -42,18 +66,27 @@ export default Ember.Component.extend({
 
                 if (headerName[name] !== undefined) {
                     tmpName = headerName[name];
+                                       
                 } else {
                     tmpName = name;
                 }
+                this.get("headerNameOriginal")[tmpName] = name;
+
                 this.get('dataHeader').push(tmpName);
                 // console.log('value =' + data[0].get(name));
             });
         }
 
+        console.log(this.get("headerNameOriginal"));
+        this.tableOperation();
+    }),
 
+
+    tableOperation: function() {
+        var data = this.get('data'); 
+    
         if (data !== undefined && Array.isArray(data) && data.length >= 1) {
             this.set("tableValue", []);
-
 
             for (var i = 0; i < data.length; i++) {
                 var json = data[i];
@@ -66,7 +99,7 @@ export default Ember.Component.extend({
                 });
                 this.get("tableValue").push(tmpTableValue);
             }
-            console.log(this.get("tableValue"));
+          //  console.log(this.get("tableValue"));
         }
 
 
@@ -74,13 +107,14 @@ export default Ember.Component.extend({
         this.set('dataFilter', data);
     },
 
+
     actions: {
         prueba: function() {
             console.log(this.get('exe'));
             console.log(this.get("data"));
         },
         onFilter: function(a) {
-            alert(a + 1);
+            alert(a); 
         }
 
     }
