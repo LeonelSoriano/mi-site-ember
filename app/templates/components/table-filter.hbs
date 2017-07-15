@@ -2,54 +2,64 @@
 <div class="row">
   <div class="small-1 large-1 columns">&nbsp;</div>
   <div class="small-9 large-9 columns">
+    <div class="row">
+        <table>
+          <thead>
+           
+            <th style="text-align:center"> seleccione</th>
+              {{#each dataHeader as |data index|}}
+                  <th style="text-align:center"> {{data}}  
+            {{input style="margin-top: 4px" type="text"  
+                key-up=(action "onFilter" data) }}
+              </th>
 
-    <table>
-      <thead>
-       
-           <th style="text-align:center"> seleccione</th>
-          {{#each dataHeader as |data index|}}
-              <th style="text-align:center"> {{data}}  
-		{{input style="margin-top: 4px" type="text"  
-		    key-up=(action "onFilter" data) }}
-	      </th>
-
-          {{/each}}
-      
-       
-      </thead>
-      <tbody>
-    
-        {{#each tableValue as |json|}}
-              
-              <tr >
-                  {{#each json as |data index|}}
-               
-                {{#if index 0}}
-                  <td>{{data}}</td>
-                {{/if}}
-                {{#unless index 0}}
-
-                  <td>
-
-                    <div class="radio">
-                      <label>
-                          {{input type="radio" name="selectedId" change=(action (mut selectedId) data)  value=data}}
-                          <span class="custom-radio"><i class="icon-radio-check"></i></span>
-                      </label>
-                    </div>
-
-
-                  </td>
-
-
-                {{/unless}}
+              {{/each}}
+          
+           
+          </thead>
+          <tbody>
+        
+            {{#each tableValue as |json|}}
                   
-               {{/each}}
-              </tr>
-        {{/each}}
-      </tbody>
-    </table>
+                  <tr >
+                      {{#each json as |data index|}}
+                   
+                    {{#if index 0}}
+                      <td>{{data}}</td>
+                    {{/if}}
+                    {{#unless index 0}}
 
+                      <td>
+
+                        <div class="radio">
+                          <label>
+                              {{input type="radio" name="selectedId"
+                                change=(action (mut selectedId) data)  value=data}}
+                              <span class="custom-radio"><i class="icon-radio-check"></i></span>
+                          </label>
+                        </div>
+
+                      </td>
+
+                    {{/unless}}
+                      
+                   {{/each}}
+                  </tr>
+            {{/each}}
+          </tbody>
+        </table>
+    </div><!--end row -->
+    <div class="row">
+        <div class="small button-group">
+            <a {{action "onCreate"}} class=" button" style="margin-right: 4px;" >Crear</a>
+          {{#if selectedId  }}
+                <a class="success button">Modificar</a>
+                <a class="warning button">Eliminar</a>
+          {{/if}}
+          <a class="alert button">Especial</a>
+    
+        </div>
+    </div>
   </div>
   <div class="small-1 large-1 columns">&nbsp;</div>
 </div>
