@@ -20,7 +20,12 @@ export default Ember.Controller.extend(SweetAlertMixin, {
 
     init: function() {
         var self = this;
+
+      // var popup = new Foundation.Reveal($('#exampleModal'));
         // this.set('entitySerie', this.store.createRecord('Serie'));
+//popup.open();
+  
+
 
         this.store.findAll('Serie').then(function(series) {
 
@@ -28,6 +33,11 @@ export default Ember.Controller.extend(SweetAlertMixin, {
         });
 
         //  console.log(this.entitySerie);
+    },
+    
+    createSerie: function(){
+        this.get('dialogCreate').open();
+       
     },
 
     actions: {
@@ -75,9 +85,6 @@ export default Ember.Controller.extend(SweetAlertMixin, {
                     });
 
                 });
-
-
-
 
 
 

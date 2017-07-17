@@ -1224,3 +1224,30 @@ ALERT
         transform: translate(15px);
     }
 }
+
+
+
+
+
+#myDiv {
+  position: relative;
+  /*background-color: #C0DBF0;*/
+  padding: 20px;
+}
+
+.loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /*background-color: red;*/
+  opacity: 0.4;
+}
+
+.spin-loader {
+  min-height: 100px;
+  background: url("http://i62.tinypic.com/2hzsro.gif") no-repeat center center transparent;
+  position: relative;
+  top: 25%;
+}

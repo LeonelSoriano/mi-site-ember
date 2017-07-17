@@ -49,17 +49,44 @@
           </tbody>
         </table>
     </div><!--end row -->
+    
     <div class="row">
-        <div class="small button-group">
-            <a {{action "onCreate"}} class=" button" style="margin-right: 4px;" >Crear</a>
-          {{#if selectedId  }}
-                <a class="success button">Modificar</a>
-                <a class="warning button">Eliminar</a>
-          {{/if}}
-          <a class="alert button">Especial</a>
+       {{#if data  }}
+          <div class="small-6 large-6 columns">
+              <div class="small button-group  float-left">
+                  <a {{action "onCreate"}} class="success button" style="margin-right: 4px;" >Crear</a>
+                    {{#if selectedId  }}
+                          <a {{action "onUpdate"}} class="warning button"  style="margin-right: 4px;">Modificar</a>
+                          <a {{action "onDelete"}}  class="alert button" style="margin-right: 4px;" >Eliminar</a>
+                           <a {{action "onSpecial"}} class=" button" style="margin-right: 4px;" >Especial</a>
+                    {{/if}}
+            
+            </div>
     
         </div>
-    </div>
+        
+        
+        
+          <div class="small-6 large-6 columns ">
+              <div  class="small button-group  float-right ">
+                
+                {{#times-each maxPage as |time|}}
+  
+              <a  {{action "onselectPage" time}} 
+                    class=" button" style="margin-right: 4px;" style="pading:1px" >{{time}}</a>
+  
+  
+                {{/times-each}}
+               
+            </div>
+             <div class="small-1 large-6 columns">
+            </div> 
+        </div>
+      {{/if}}<!-- fi table value -->
+    </div> <!-- end botoneras -->
+    
+    
+    
   </div>
   <div class="small-1 large-1 columns">&nbsp;</div>
 </div>
@@ -67,8 +94,5 @@
 
 
  <button {{action "prueba"}} class="ui fluid large teal submit button " >Login</button>
-
-
-
 
 {{yield}}

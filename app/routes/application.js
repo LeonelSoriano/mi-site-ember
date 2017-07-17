@@ -5,7 +5,7 @@ export default Ember.Route.extend({
  beforeModel: function() {
 
 	//console.log(this.get('session.currentUser.email'));
-
+    
     return this.get('session').fetch().catch(function() {});
 
   },

@@ -41,9 +41,28 @@ export default Ember.Component.extend({
 
     exe: null,
 
+    /**
+    * id selecionado con los radio button
+    */
     selectedId: null,
-
-
+    
+    /**
+     *  itenes en cada pagina
+     */ 
+    maxItemPage: 2,
+    
+    /**
+     * cantidad maxia de paginas
+     */
+    maxPage: 0,
+    
+    /**
+     * pagina actual donde se esta
+     */
+    actualPAge: 1,
+    
+    onCreateCtr: null,
+    
     value: function() { return this.get('data'); }.property('data'),
 
     init: function() {
@@ -91,6 +110,10 @@ export default Ember.Component.extend({
 
     tableOperation: function() {
         var data = this.get('data');
+        
+        var actualPAge = this.get('actualPAge') - 1;
+        
+        var maxItemPage  = this.get('maxItemPage');
 
         if (data !== undefined && Array.isArray(data) && data.length >= 1) {
             this.set("tableValue", []);
@@ -130,18 +153,31 @@ export default Ember.Component.extend({
                 }
 
             }
+            
+            
+            //parte de la paginacion
+            
+            //cantidad maxima de paginas
+            this.set('maxPage', Math.ceil(data.length/this.get('maxItemPage'))) ;
+            
+            var tableValue  = this.get('tableValue');
+            
+             this.set('tableValue' , tableValue.slice(actualPAge * maxItemPage, (actualPAge * maxItemPage) + maxItemPage ));
+
+          
 
         }// END data !== undefined ....
+        
 
-
-        this.set('dataFilter', data);
+     //   this.set('dataFilter', data);
     },
 
 
     actions: {
-        prueba: function() {
-            console.log(this.get('exe'));
-            console.log(this.get("data"));
+        prueba: function(a) {
+            //console.log(this.get('exe'));
+           // console.log(this.get("data"));
+           
         },
         onFilter: function(nameFilter) {
 
@@ -150,8 +186,25 @@ export default Ember.Component.extend({
             this.tableOperation();
         },
         onCreate: function(){
-            console.log("on create");
-        }
+           var onCreateCtr = this.get('onCreateCtr');
+            if(onCreateCtr !== null){
+               onCreateCtr();
+            }
+        },
+        onUpdate: function(){
+              console.log("on update");
+        },
+        onDelete: function(){
+              console.log("on delete");
+        },
+        onSpecial: function(){
+              console.log("on special");
+        },
+        onselectPage: function(selected){
+            this.set('actualPAge', selected);
+            this.tableOperation();
+          
+        },
 
     }
 
